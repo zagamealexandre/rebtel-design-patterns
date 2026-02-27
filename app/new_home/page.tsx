@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Label,
   ActionLabel,
@@ -50,6 +51,7 @@ const recentTopUps: RecentTopUp[] = [
 ];
 
 export default function NewHomePage() {
+  const router = useRouter();
   const [flowState, setFlowState] = useState<FlowState>('home');
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const [callDuration, setCallDuration] = useState(0);
@@ -88,6 +90,18 @@ export default function NewHomePage() {
     setSelectedContact(null);
     setCallDuration(0);
   }, []);
+
+  const handleBottomNavChange = useCallback((tab: 'home' | 'services' | 'account') => {
+    if (tab === 'home') {
+      router.push('/new_home');
+      return;
+    }
+    if (tab === 'services') {
+      router.push('/services-bills');
+      return;
+    }
+    router.push('/account');
+  }, [router]);
 
   useEffect(() => {
     if (flowState === 'connecting') {
@@ -195,7 +209,7 @@ export default function NewHomePage() {
         ))}
       </div>
 
-      <BottomNavBar activeTab="home" />
+      <BottomNavBar activeTab="home" onTabChange={handleBottomNavChange} />
 
       {/* Bottom Sheet: Out of minutes */}
       <BottomSheet

@@ -51,6 +51,7 @@ export { BottomSheet } from './molecules/BottomSheet';
 export { ContactList } from './organisms/ContactList';
 export { BottomNavBar } from './organisms/BottomNavBar';
 export { CallingScreenView } from './organisms/CallingScreen';
+export { IPhoneFrame, StatusBar } from './organisms/IPhoneFrame';
 
 // Re-export types
 export type { } from './atoms/Typography';
