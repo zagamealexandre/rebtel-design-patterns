@@ -1,0 +1,471 @@
+@import "tailwindcss";
+
+/* ============================================
+   REBTEL 3.0 DESIGN SYSTEM
+   CSS Variables & Theme Configuration
+   ============================================ */
+
+:root {
+  /* Background & Foreground */
+  --background: #FAFAFC;
+  --foreground: #2D2D32;
+
+  /* Brand Colors */
+  --brand-red: #E31B3B;
+  --brand-black: #111111;
+  --brand-white: #FFFFFF;
+
+  /* Grey Scale */
+  --grey-900: #111111;
+  --grey-800: #2D2D32;
+  --grey-700: #505055;
+  --grey-600: #737378;
+  --grey-500: #96969B;
+  --grey-400: #B9B9BE;
+  --grey-300: #DCDCE1;
+  --grey-200: #F3F3F3;
+  --grey-100: #FAFAFC;
+  --grey-0: #FFFFFF;
+
+  /* Red Scale */
+  --red-60: #5B0B18;
+  --red-50: #881023;
+  --red-40: #B6162F;
+  --red-rebtel: #E31B3B;
+  --red-30: #E94962;
+  --red-20: #EE7689;
+  --red-10: #F4A4B1;
+
+  /* Semantic Colors */
+  --semantic-warning: #F06E1D;
+  --semantic-warning-light: #F7B68E;
+  --semantic-warning-lighter: #FBDBC6;
+  --semantic-green-darker: #09BC09;
+  --semantic-green: #49CD18;
+  --semantic-green-light: #A4E68B;
+  --semantic-green-lighter: #D1F3C5;
+  --semantic-purple: #4200FF;
+
+  /* Surface Colors */
+  --surface-calling: #EDEADD;
+  --surface-mtu: #DAE2F4;
+  --surface-canvas: #FAFAFC;
+  --surface-lighter: #FFFFFF;
+  --surface-light: #F3F3F3;
+  --surface-neutral: #DCDCE1;
+  --surface-darker: #111111;
+  --surface-overlay: rgba(17, 17, 17, 0.4);
+  --surface-darker-transparent: rgba(17, 17, 17, 0.6);
+
+  /* Text Colors */
+  --text-primary: #2D2D32;
+  --text-secondary: #96969B;
+  --text-tertiary: #737378;
+  --text-white-constant: #FFFFFF;
+  --text-homecard-meta: #505055;
+
+  /* Border Colors */
+  --border-primary: #DCDCE1;
+
+  /* Spacing */
+  --spacing-xxxs: 2px;
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --spacing-xxxl: 52px;
+  --spacing-xxxxl: 72px;
+
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-xxl: 32px;
+
+  /* Icon Sizes */
+  --icon-xxs: 12px;
+  --icon-xs: 16px;
+  --icon-sm: 20px;
+  --icon-md: 24px;
+  --icon-lg: 32px;
+  --icon-xl: 40px;
+
+  /* Object Heights */
+  --object-height-xs: 24px;
+  --object-height-sm: 32px;
+  --object-height-md: 40px;
+  --object-height-lg: 48px;
+  --object-height-xl: 52px;
+  --object-height-xxl: 64px;
+  --object-height-xxxl: 72px;
+
+  /* Shadows */
+  --shadow-elevation-1: 4px 5px 10px 0px rgba(0, 0, 0, 0.02);
+  --shadow-elevation-2: 0px 4px 16px 0px rgba(0, 0, 0, 0.08);
+  --shadow-elevation-3: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);
+
+  /* Font Families */
+  --font-display: "Pano", system-ui, sans-serif;
+  --font-body: "KH Teka", system-ui, sans-serif;
+}
+
+/* Dark mode overrides (if needed in future) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #2D2D32;
+    --foreground: #FAFAFC;
+    --surface-canvas: #2D2D32;
+    --surface-lighter: #111111;
+    --text-primary: #FAFAFC;
+    --text-secondary: #B9B9BE;
+    --text-tertiary: #B9B9BE;
+  }
+}
+
+/* Tailwind Theme Integration */
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-brand-red: var(--brand-red);
+  --color-brand-black: var(--brand-black);
+  --color-brand-white: var(--brand-white);
+  
+  --color-grey-900: var(--grey-900);
+  --color-grey-800: var(--grey-800);
+  --color-grey-700: var(--grey-700);
+  --color-grey-600: var(--grey-600);
+  --color-grey-500: var(--grey-500);
+  --color-grey-400: var(--grey-400);
+  --color-grey-300: var(--grey-300);
+  --color-grey-200: var(--grey-200);
+  --color-grey-100: var(--grey-100);
+  --color-grey-0: var(--grey-0);
+  
+  --color-red-60: var(--red-60);
+  --color-red-50: var(--red-50);
+  --color-red-40: var(--red-40);
+  --color-red-rebtel: var(--red-rebtel);
+  --color-red-30: var(--red-30);
+  --color-red-20: var(--red-20);
+  --color-red-10: var(--red-10);
+  
+  --color-semantic-warning: var(--semantic-warning);
+  --color-semantic-warning-light: var(--semantic-warning-light);
+  --color-semantic-warning-lighter: var(--semantic-warning-lighter);
+  --color-semantic-green-darker: var(--semantic-green-darker);
+  --color-semantic-green: var(--semantic-green);
+  --color-semantic-green-light: var(--semantic-green-light);
+  --color-semantic-green-lighter: var(--semantic-green-lighter);
+  --color-semantic-purple: var(--semantic-purple);
+  
+  --color-surface-calling: var(--surface-calling);
+  --color-surface-mtu: var(--surface-mtu);
+  --color-surface-canvas: var(--surface-canvas);
+  --color-surface-lighter: var(--surface-lighter);
+  --color-surface-light: var(--surface-light);
+  --color-surface-neutral: var(--surface-neutral);
+  --color-surface-darker: var(--surface-darker);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-white: var(--text-white-constant);
+  
+  --color-border-primary: var(--border-primary);
+  
+  /* Font Families */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  
+  /* Spacing */
+  --spacing-xxxs: var(--spacing-xxxs);
+  --spacing-xxs: var(--spacing-xxs);
+  --spacing-xs: var(--spacing-xs);
+  --spacing-sm: var(--spacing-sm);
+  --spacing-md: var(--spacing-md);
+  --spacing-lg: var(--spacing-lg);
+  --spacing-xl: var(--spacing-xl);
+  --spacing-xxl: var(--spacing-xxl);
+  --spacing-xxxl: var(--spacing-xxxl);
+  --spacing-xxxxl: var(--spacing-xxxxl);
+  
+  /* Border Radius */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-xxl: var(--radius-xxl);
+}
+
+/* Base Styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Display Typography */
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0.64px;
+}
+
+.text-display-md {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0.48px;
+}
+
+.text-display-sm {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: 0.4px;
+}
+
+.text-display-xs {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+}
+
+/* Headline Typography */
+.text-headline-lg {
+  font-family: var(--font-body);
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0.64px;
+}
+
+.text-headline-md {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.48px;
+}
+
+.text-headline-sm {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: 0.4px;
+}
+
+.text-headline-xs {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+}
+
+/* Paragraph Typography */
+.text-paragraph-xl {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: 0.4px;
+}
+
+.text-paragraph-lg {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.36px;
+}
+
+.text-paragraph-md {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+}
+
+.text-paragraph-sm {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.28px;
+}
+
+.text-paragraph-xs {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.24px;
+}
+
+/* Label Typography */
+.text-label-xl {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+}
+
+.text-label-lg {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.36px;
+}
+
+.text-label-md {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.32px;
+}
+
+.text-label-sm {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.28px;
+}
+
+.text-label-xs {
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 11px;
+  letter-spacing: 0.22px;
+}
+
+/* Mobile-first viewport */
+@layer utilities {
+  .mobile-container {
+    max-width: 390px;
+    margin: 0 auto;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Gradient shift animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Floating orb animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-25px, 15px) scale(1.03);
+  }
+  50% {
+    transform: translate(15px, -25px) scale(0.97);
+  }
+  75% {
+    transform: translate(20px, 10px) scale(1.02);
+  }
+}
+
+@keyframes float-fast {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  20% {
+    transform: translate(15px, -15px) scale(1.04);
+  }
+  40% {
+    transform: translate(-10px, 20px) scale(0.96);
+  }
+  60% {
+    transform: translate(-20px, -10px) scale(1.02);
+  }
+  80% {
+    transform: translate(10px, 15px) scale(0.98);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 20s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 15s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 10s ease-in-out infinite;
+}
+
+/* Subtle pulse for logo */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 40px rgba(200, 30, 30, 0.3);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 15px 50px rgba(200, 30, 30, 0.4);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Bottom sheet slide up */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
