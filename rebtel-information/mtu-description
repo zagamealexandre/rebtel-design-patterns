@@ -1,0 +1,215 @@
+# MTU — Mobile Top-Up at Rebtel
+
+This document gives a consolidated overview of **MTU (Mobile Top-Up)** at Rebtel, combining information from MTU, MTU Revamping, 2.5 Mexico MTU, and Marketplace/Hydra documentation into a single reference for Product, Commercial, and Engineering teams.
+
+---
+
+# 1. MTU Domain — What It Is and Why It Matters
+
+Mobile Top-Up (MTU) is the part of Rebtel where customers:
+
+- Select a **country + operator + product** (credit or bundles).
+- Pay with one of our **payment methods**.
+- Trigger a **recharge** to a recipient’s number through an external **supplier / aggregator**.
+
+MTU is tightly connected to:
+
+- **Marketplace / Hydra** → product configuration, routing, pricing, promotions, limits.
+- **Payments** → authorization, settlement, refunds.
+- **Subscriptions** → recurring MTU where enabled.
+- **CRM & Growth** → campaigns, welcome offers, reactivation flows.
+
+At a high level, the MTU domain covers:
+
+- Product catalog (what can be bought, in which corridor).
+- UX flows (Web, iOS, Android).
+- Routing and provider integrations.
+- Commercial levers (price lists, campaigns, fees, limits).
+- Monitoring and operational tooling.
+
+---
+
+# 2. MTU Products and Catalog
+
+## 2.1 Product Definition
+
+Each MTU product typically includes:
+
+- **id** → internal product ID (Hydra/Marketplace)
+- **CountryId** → destination country code (e.g., `MX`, `HT`)
+- **Operator / Provider** → telco brand and/or aggregator
+- **Title** → customer-facing name
+- **Description** → bundle or product explanation
+- **Denominations** → fixed amounts or ranges
+- **Type**
+  - Standard credit (e.g., "$10 Airtime")
+  - Bundles (data, voice, SMS, combos)
+  - Promotions (bonus credit, double top-up, extra data)
+
+Product data originates from external **suppliers**, then is transformed and configured in **Hydra / Marketplace** before being exposed in customer-facing flows.
+
+---
+
+## 2.2 Supplier Dynamics
+
+Suppliers update their product catalogs frequently:
+
+- New products may be added.
+- Existing products may be:
+  - Removed or deactivated.
+  - Renamed or re-described.
+  - Re-priced.
+  - Re-categorized.
+- Technical flags (routable, subscription availability, promotions) may change.
+
+Because of this, the MTU catalog is **dynamic** and requires:
+
+- Automated synchronization.
+- Monitoring and validation.
+- Periodic manual review for high-impact markets.
+
+---
+
+# 3. Subscriptions vs One-Off Products
+
+MTU products can be:
+
+- **One-off top-ups** → single recharge purchases.
+- **Subscription-enabled products** → recurring scheduled top-ups.
+
+Not all products support subscriptions. Subscription availability depends on:
+
+- Supplier technical capabilities.
+- Commercial viability.
+- Routing configuration.
+- Market strategy.
+
+Clear separation between subscription and one-off flows is a key UX and commercial principle.
+
+---
+
+# 4. MTU Revamping — Direction & Principles
+
+MTU Revamping (MTU 3.0 efforts) aims to:
+
+- Simplify the buy flow.
+- Reduce friction.
+- Improve conversion.
+- Align cross-platform behavior.
+- Increase operational clarity.
+
+## Core Principles
+
+- **Drastic simplification** → Reduce overlapping bundles and confusing variants.
+- **Behavior-based ordering** → Sort products by popularity, recency, and business rules.
+- **Cross-platform consistency** → Same corridor/product behavior across Web, iOS, and Android.
+- **Clear mapping** → Supplier product → Internal product → Frontend variant.
+
+## Focus Areas
+
+- Product list UX (sorting, highlighting popular options).
+- Clear subscription vs one-off separation.
+- Better collaboration between Commercial and Engineering.
+- Improved observability and traceability across systems.
+
+---
+
+# 5. 2.5 Mexico MTU — Market-Specific Initiative
+
+Mexico is a priority MTU market with focused optimization work.
+
+Key areas:
+
+- Product assortment optimization.
+- Pricing and margin balancing.
+- Campaign design (welcome offers, reactivation bonuses).
+- Operator prioritization.
+- Mexico-specific UX considerations (currency, language, value perception).
+
+## Typical Goals
+
+- Improve product selection → successful recharge conversion.
+- Increase repeat rate and LTV.
+- Reduce support tickets and complaints.
+- Validate revamp patterns before scaling to other markets.
+
+---
+
+# 6. Marketplace & Hydra — Configuration Backbone
+
+MTU products rely heavily on Marketplace and Hydra configuration.
+
+These systems define:
+
+- Which products are visible.
+- Retail pricing and service fees.
+- Supplier routing logic.
+- Subscription eligibility.
+- Limits (per-user and per-product).
+- Campaign eligibility.
+- Special routing behaviors (e.g., Cuba alternative flows).
+
+Together, these systems determine how MTU behaves commercially and technically.
+
+---
+
+# 7. MTU KPIs & Monitoring
+
+## Core Funnel
+
+- Sessions
+- Product selection
+- Payment initiated
+- Successful recharge
+
+## Key Metrics
+
+- Success rate by corridor, operator, supplier.
+- Average Order Value (AOV).
+- Margin per corridor.
+- Subscription attach rate.
+- Refund and dispute rates.
+- Supplier callback reliability.
+
+Monitoring relies on:
+
+- Application logs.
+- Supplier callback tracking.
+- BI dashboards (e.g., Snowflake or equivalent analytics tools).
+- Operational alerting systems.
+
+---
+
+# 8. Operational Playbook (High-Level)
+
+For day-to-day MTU operations:
+
+- Monitor newly introduced or changed products from suppliers.
+- Review high-impact markets regularly.
+- Ensure pricing, routing, and limits align with strategy.
+- Follow MTU Revamping principles when:
+  - Introducing new product variants.
+  - Adjusting product ordering.
+  - Launching campaigns.
+  - Designing new flows.
+
+Before modifying key corridors:
+
+- Review market-specific documentation (e.g., Mexico MTU).
+- Validate commercial and technical implications.
+- Ensure consistency across platforms.
+
+---
+
+# Summary
+
+MTU is a cross-functional domain combining:
+
+- Supplier integrations.
+- Marketplace configuration.
+- Payments infrastructure.
+- Subscriptions.
+- Commercial strategy.
+- UX optimization.
+
+It is dynamic, commercially sensitive, and operationally complex — requiring strong coordination between Product, Engineering, Commercial, Growth, and Operations.
